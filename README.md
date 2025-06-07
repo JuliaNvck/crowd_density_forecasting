@@ -1,10 +1,10 @@
 # Crowd Density Forecasting in NYC Taxi Zones
 
-This repository contains two approaches to forecasting **crowd density** in NYC based on historical **taxi drop-off data**. The models use spatiotemporal deep learning techniques (GNNs + RNNs) to predict drop-off activity in different zones for urban planning and mobility insights.
+This repository contains two approaches to forecasting **crowd density** in NYC based on historical **taxi drop-off data**. The models use spatiotemporal deep learning techniques (GNNs + RNNs) to predict drop-off activity in different zones with applications in urban planning and mobility insights.
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 - `crowd_forecasting.ipynb`  
   → Uses a **feature matrix per time step** with GNN + RNN to predict hourly features for each zone.  
@@ -16,7 +16,7 @@ This repository contains two approaches to forecasting **crowd density** in NYC 
 
 ---
 
-## 📌 Goals
+## Goals
 
 - Predict zone-level **crowd density** (via drop-off counts).
 - Capture **spatial dependencies** using GNNs.
@@ -25,7 +25,7 @@ This repository contains two approaches to forecasting **crowd density** in NYC 
 
 ---
 
-## 🧠 Model Architectures
+## Model Architectures
 
 ### 1. `crowd_forecasting.ipynb` (Tabular GNN+RNN Approach)
 - **Input**: Hourly matrix of features (e.g. dropoff count, fare, weekday).
@@ -33,7 +33,7 @@ This repository contains two approaches to forecasting **crowd density** in NYC 
 - **RNN**: GRU over sequences of GNN outputs.
 - **Output**: Next-hour prediction of zone-level features.
 - **Forecasting**: 1-step and multi-step into the future.
-- **Highlights**: Simulates different days (e.g. Monday vs Saturday), visualizes per-zone predictions.
+- **Highlights**: Simulates different days over 24 hours (e.g. Monday vs Saturday), visualizes per-zone predictions.
 
 ### 2. `graphs_per_time.ipynb` (Graph-Per-Timestep Approach)
 - **Input**: Sequence of hourly graphs with edge weights and rich node features.
@@ -44,7 +44,7 @@ This repository contains two approaches to forecasting **crowd density** in NYC 
 
 ---
 
-## 📊 Evaluation
+## Evaluation
 
 - **Metrics used**:
   - Mean Squared Error (MSE)
@@ -52,32 +52,32 @@ This repository contains two approaches to forecasting **crowd density** in NYC 
   - Coefficient of Determination (R²)
   - Relative Error (%)
 - Zone-level and time-series comparisons included.
+- Distinct metrics/evaluation approaches tailored to each framework
 
 ---
 
-## 📂 Data
+## Data
 
-- **Source**: NYC Yellow Taxi Trip Data (2017–2018)
+- **Source**: NYC Yellow Taxi Trip Data (2017–2018) (https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
 - **Preprocessing**:
   - Aggregation into hourly windows
   - Filtering top 50 drop-off zones
   - One-hot and sinusoidal time encodings
-  - Static or dynamic graph construction
+  - Static graph construction
 
 ---
 
-## 📈 Results Summary
+## Results Summary
 
 | Approach               | Strengths                                                      | Notes                                                         |
 |------------------------|----------------------------------------------------------------|---------------------------------------------------------------|
-| `crowd_forecasting`    | Interpretable; forecasts per feature & zone; simulates specific days | Performs well with static graph & clean validation             |
-| `graphs_per_time`      | Encodes richer time-based spatial structure; handles calendar effects | More sensitive to graph construction and overfitting           |
+| `crowd_forecasting`    | Effective at fine-grained, short-term forecasting; excels in zone-specific and intraday variations | Great for simulating day-specific effects and visualizations             |
+| `graphs_per_time`      | Strong long-term generalization; captures macro-level graph dynamics in high-volume zones | Graph-based patterns help stabilize average demand prediction    |
 
 ---
+Both models have strong predictive capabilities but are better in different aspects, judging from the results. Method 1 (`graphs_per_time`) excels at learning from graph patterns and long-term generalization. In high-volume zones, it performs well in predicting average demand levels accurately. In contrast, Method 2 (`crowd_forecasting`) excels in capturing fine-grained temporal and spatial variations and is effective in simulating intraday and zone-specific dynamics. This approach is well-suited for day-specific forecasting and visualization.
 
-## 🛠️ Setup
 
-```bash
-conda create -n crowdenv python=3.9
-conda activate crowdenv
-pip install -r requirements.txt
+## Contributers
+
+Julia Novick and Eirini Schoinas

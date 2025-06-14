@@ -74,6 +74,9 @@ This repository contains two approaches to forecasting **crowd density** in NYC 
 | `crowd_forecasting`    | Effective at fine-grained, short-term forecasting; excels in zone-specific and intraday variations | Great for simulating day-specific effects and visualizations             |
 | `graphs_per_time`      | Strong long-term generalization; captures macro-level graph dynamics in high-volume zones | Graph-based patterns help stabilize average demand prediction    |
 
+
+![Loss](Result_graphs/Loss_graph.png)
+![Loss](Result_graphs/Predicted_density_across_zones.png)
 ---
 Both models have strong predictive capabilities but are better in different aspects, judging from the results. Method 1 (`graphs_per_time`) excels at learning from graph patterns and long-term generalization. In high-volume zones, it performs well in predicting average demand levels accurately. In contrast, Method 2 (`crowd_forecasting`) excels in capturing fine-grained temporal and spatial variations and is effective in simulating intraday and zone-specific dynamics. This approach is well-suited for day-specific forecasting and visualization.
 

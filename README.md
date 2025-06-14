@@ -1,6 +1,8 @@
 # Crowd Density Forecasting in NYC Taxi Zones
 
-This repository contains two approaches to forecasting **crowd density** in NYC based on historical **taxi drop-off data**. The models use spatiotemporal deep learning techniques (GNNs + RNNs) to predict drop-off activity in different zones with applications in urban planning and mobility insights.
+This repository contains two approaches to forecasting **crowd density** in NYC based on historical **taxi drop-off data**. The models use spatiotemporal deep learning techniques (GNNs + RNNs) to predict drop-off activity in different zones with applications in urban planning and mobility insights. 
+
+[View the project report](GNN-RNN_CrowdDensityForecasting.pdf)
 
 ---
 
